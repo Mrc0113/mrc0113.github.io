@@ -36,14 +36,14 @@ owner:
   name: Marc DiPasquale
   avatar: avatar.jpg
   job: "Developer Advocate @ Solace."
-  bio: "Software Engineer. UCF CS Alumnus. Cloud Native & Event Driven Believer."
+  bio: "Software Engineer. UCF CS Alumnus. My apps are usually event-driven and hanging out in the clouds"
   email:
   disqus-shortname:
   twitter: Mrc0113 #username
   facebook: #username
   google:
     plus: #username
-    analytics:
+    analytics: UA-139902608-1
     verify:
     ad-client:
     ad-slot:
