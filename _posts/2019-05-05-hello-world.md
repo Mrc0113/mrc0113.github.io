@@ -5,6 +5,7 @@ excerpt: "Hello, World."
 categories: [post]
 tags: []
 comments: true
+github_comments_issueid: 1
 ---
 
 ## Obligatory First Post

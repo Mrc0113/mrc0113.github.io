@@ -68,7 +68,12 @@ layout: default
   </ul>
 </div><!-- end share-buttons -->
 
-{% if site.owner.disqus-shortname and page.comments == true %}
+<!--{% if site.owner.disqus-shortname and page.comments == true %}
 <div id="disqus_thread"></div>
 {% include disqus.html %}
-{% endif %}
+{% endif %}-->
+<div class="page-content">
+   <div class="wrapper">
+     {% include github_comments.html %}
+   </div>
+</div>
