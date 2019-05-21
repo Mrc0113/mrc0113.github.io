@@ -6,6 +6,8 @@ This repository contains my static site, marcd.dev
 * My site is powered by Jekyll and is based on the Leonids theme
 * [Leonids](http://renyuanz.github.io/leonids)** is a clean Jekyll theme perfect for powering your GitHub hosted blog.
 
+## Streamlineicons.com 
+* Icons (e.g: favicon.png) came from Streamlineicons.com - World's largest icon collection
 ## Quick setup
 
 ```
