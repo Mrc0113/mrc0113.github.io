@@ -2,7 +2,7 @@
 layout: post
 title: Talk at MuleSoft Connect 2019
 excerpt: "API Management, Meet Event Management"
-categories: [talk, conference]
+categories: [talk]
 tags: [talk]
 comments: true
 ---
