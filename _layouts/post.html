@@ -46,9 +46,13 @@ layout: default
     <li>
       <a href="https://twitter.com/intent/tweet?text={{ site.url }}{{ page.url }}" class="twitter btn" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
-   <!-- <li>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}" class="linkedin btn" title="Share on LinkedIn"><i class="fa fa-linkedin"></i><span> LinkedIn</span></a>
-    </li>-->
+    <li>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title }}&summary={{ page.description }}&source={{ site.title }}"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            class="linkedin btn" title="Share on LinkedIn" >
+            <i class="fa fa-linkedin share-button"> LinkedIn</i>
+        </a>
+    </li>
     <li>
       <a href="https://www.reddit.com/submit?url={{ site.url }}{{ page.url }}" class="reddit btn" title="Share on Reddit"><i class="fa fa-reddit"></i><span> Reddit</span></a>
     </li>
@@ -60,10 +64,6 @@ layout: default
     </li>
     <li>
       <a href="https://news.ycombinator.com/submitlink?u={{ site.url }}{{ page.url }}" class="hacker-news btn" title="Share on Hacker News"><i class="fa fa-hacker-news"></i><span> Hacker News</span></a>
-    </li>-->
-    <!--<li>
-	    <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
-	    <script type="IN/Share" data-url="{{ site.url }}{{ page.url }}"></script>
     </li>-->
   </ul>
 </div><!-- end share-buttons -->
