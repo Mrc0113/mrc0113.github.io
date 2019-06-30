@@ -12,7 +12,7 @@ This repository contains my static site, marcd.dev
 
 ```
 git clone 
-cd leonids
+cd mrc0113.github.io
 jekyll server
 ```
 
