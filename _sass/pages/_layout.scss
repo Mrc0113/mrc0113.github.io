@@ -31,13 +31,13 @@
   }
   .author_name {
     display: block;
-    color: #0972a2;
+    color: $primary; //text-color; //#0972a2;
     font-size: 1.75em;
   //  text-transform: lowercase;
   }
   .author_job {
     display: block;
-    color: $secondary;
+    color: $warning; //$secondary;
     font-size: 0.8em;
     font-weight: 700;
     text-transform: uppercase;
@@ -63,10 +63,10 @@
       display: inline-block;
       margin-left: 1em;
       a.social-link-item {
-        color: $secondary;
+        color: $primary; //$secondary;
         &:hover,
         &:focus {
-          color: lighten($secondary, 14%);
+          color: lighten($primary, 14%);
         }
       }
     }
@@ -90,10 +90,10 @@
       margin-top: 1em;
       text-transform: lowercase;
       font-size: 85%;
-      color: $secondary;
+      color: $primary; //$secondary;
       &:hover,
       &:focus {
-        color: lighten($secondary, 14%);
+        color: lighten($primary, 14%);
       }
     }
   }

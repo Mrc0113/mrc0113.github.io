@@ -5,7 +5,7 @@
 #
 title: marcd.dev
 email: 
-description: marcd.dev site powered by jekyll.
+description: marcd.dev
 url: https://marcd.dev  # the base hostname & protocol for your site
 keywords: ["software","developer","programming","devops","cloud native","java","spring cloud","messaging","blog","jekyll"]
 # Repo that will contain issue comments for blog posts
