@@ -1,3 +1,3 @@
 [submodule "submodules/codelab-4-codelab"]
 	path = submodules/codelab-4-codelab
-	url = https://github.com:Mrc0113/codelab-4-codelab.git
+	url = git@github.com:Mrc0113/codelab-4-codelab.git
