@@ -15,9 +15,11 @@
         <a href="{{ site.url }}/">home</a>
       </li>
       {% for page in site.pages %} {% if page.title %}
-      <li class="nav-item">
-        <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a>
-      </li>
+          {% unless page.exclude %}
+             <li class="nav-item">
+                <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a>
+             </li>
+	  {% endunless %}
       {% endif %} {% endfor %}
     </ul>
   </nav>
