@@ -1,3 +1,6 @@
 [submodule "submodules/codelab-4-codelab"]
 	path = submodules/codelab-4-codelab
 	url = https://github.com/Mrc0113/codelab-4-codelab.git
+[submodule "submodules/workshop-scs-s1p"]
+	path = submodules/workshop-scs-s1p
+	url = https://github.com/Mrc0113/workshop-scs-s1p.git
