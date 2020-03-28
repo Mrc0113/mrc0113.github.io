@@ -30,7 +30,7 @@ const app = new Vue({
             session: {
                 active: true,
                 form: {
-                    url: "ws://mr2r9za6fwi0wf.messaging.solace.cloud:80",
+                    url: "wss://mr2r9za6fwi0wf.messaging.solace.cloud:443",
                     userName: "covid-public-client",
                     vpnName: "covid-19-streams",
                     password: "covid19",
