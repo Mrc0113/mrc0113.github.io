@@ -190,7 +190,7 @@ const app = new Vue({
                 const container = message.getSdtContainer();
                 return [container && container.getValue() || '<empty>'];
             }
-            return [message.getBinaryAttachment() || ''];
+            return [message.getBinaryAttachment() || message.getXmlContent()];
         },
 
         // Removes a message from the display.
