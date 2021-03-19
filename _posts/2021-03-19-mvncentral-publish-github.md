@@ -62,7 +62,8 @@ Here is what I did:
 	<groupId>community.solace.spring.integration</groupId>
 	<artifactId>solace-spring-integration-leader</artifactId>
 	<version>1.1.0-SNAPSHOT</version>
-    ```	
+    ``` 
+
 1. What to know about the version! Okay **this is important**. When publishing maven projects you have releases and you have snapshots. A "release" is the final build for a version which does not change whereas a "snapshot" is a temporary build which can be replaced by another build with the same name. Go ahead and google this if you want to learn more :)   
 Once you know the difference you're ready to set your version. Use a version ending in a number, e.g: `1.1.0`, for a "release" and end it in `-SNAPSHOT`, e.g: `1.1.0-SNAPSHOT` for a snapshot. 
 
@@ -71,7 +72,8 @@ Once you know the difference you're ready to set your version. Use a version end
     <name>Solace Spring Integration Leader</name>
 	<description>This project allows for Spring Integration Leader Election using Solace Exclusive Queues</description>
 	<url>https://github.com/solacecommunity/spring-solace-leader-election</url>
-    ```	
+    ``` 
+
 1. Include a license, source control info `scm`, developers and organization(I believe this is optional) information. 
     ```
     <licenses>
@@ -102,7 +104,7 @@ Once you know the difference you're ready to set your version. Use a version end
 		<developerConnection>scm:git:git@github.com:solacecommunity/solace-spring-integration-leader.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-    ```	
+    ``` 	
 
 1. Add a profile for OSSRH which includes the `snapshotRepository` info, the `nexus-staging-maven-plugin`, and the `maven-gpg-plugin`. Note in the example below I have this profile `activeByDefault` so you don't have to specify it when running maven commands, however you may not want to do this. Depends on your use case :) 
     ```
@@ -158,7 +160,7 @@ Once you know the difference you're ready to set your version. Use a version end
 				</plugins>
 			</build>
 		</profile>
-    ```	
+    ``` 	
 
 1. Include the `maven-release-plugin`, the `maven-javadoc-plugin`, the `maven-source-plugin` and the `flatten-maven-plugin` plugin. 
     ```
@@ -243,7 +245,7 @@ Once you know the difference you're ready to set your version. Use a version end
 			</plugin>
 		</plugins>
 	</build>
-    ```	
+    ``` 	
 
 ✅ The maven pom is now ready to go!
 
@@ -275,12 +277,12 @@ pub   rsa3072 2021-03-11 [SC] [expires: 2023-03-11]
       MYIDENTIFIER
 uid           [ultimate] solacecommunity <community-github@solace.com>
 sub   rsa3072 2021-03-11 [E] [expires: 2023-03-11]
-```
+``` 
 
 1. Distribute to a key server using the identifier found in the previous step. Note that you may want to publish to a different keyserver. The one that worked for me was `hkp://keyserver.ubuntu.com:11371`
 ```
 gpg --keyserver hkp://pool.sks-keyservers.net --send-keys MYIDENTIFIER
-```
+``` 
 
 ✅ We've now shared our public key!
 
@@ -331,7 +333,7 @@ jobs:
             --batch-mode \
             -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} \
             clean deploy
-```
+``` 
 
 ✅ Github Action ready to go
 
