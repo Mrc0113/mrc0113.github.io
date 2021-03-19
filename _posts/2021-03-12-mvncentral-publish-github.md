@@ -1,15 +1,15 @@
 ---
 layout: post
 title: Publishing Github Java Packages to Maven Central for a New Domain
-excerpt: "Over the past few weeks I went through the steps necessary to setup publishing of Java packages to Maven Central for a new domain. This was trickier than I thought so I figured I'd share what I did to hopefully help others :)"
+excerpt: "This post shares the steps necessary to publish Java packages to Maven Central for a new domain when the project is in Github"
 categories: [post]
-tags: []
+tags: [java, github, maven]
 comments: true
 github_comments_issueid: 11
 ---
 
 ## Overview
-The [Solace](solace.com) Developer Relations team recently launched our [SolaceCommunity github organization](github.com/SolaceCommunity) as a home for open source projects that are authored, maintained and supported by the amazing [Solace Community](solace.community). If you're interested in joining our community you can read more about it [here](https://solace.com/blog/announcing-new-solacecommunity-github-organization/), but that won't be the focus of the rest of this blog. The focus of this blog is how I enabled publishing of Java packges to Maven Central for this new github community. Since Java is one of our most used languages, and most Java projects now leverage Maven or Gradle, I wanted to enable developers contributing their Java projects to be able to easily publish to Maven Centralto make it easier for everyone in the community to easily use them. Over the past few weeks I went through the steps necessary to setup publishing of Java packages to Maven Central for the https://solace.community domain. This was trickier than I thought so I figured I'd share what I did to hopefully help others :)
+🎉 The [Solace](solace.com) Developer Relations team recently launched our [SolaceCommunity github organization](github.com/SolaceCommunity) as a home for open source projects that are authored, maintained and supported by the amazing [Solace Community](solace.community). If you're interested in joining our community you can read more about it [here](https://solace.com/blog/announcing-new-solacecommunity-github-organization/), but that won't be the focus of the rest of this blog. The focus of this blog is how I enabled publishing of Java packges to Maven Central for this new github community. Since Java is one of our most used languages, and most Java projects now leverage Maven or Gradle, I wanted to enable developers contributing their Java projects to be able to easily publish to Maven Centralto make it easier for everyone in the community to easily use them. Over the past few weeks I went through the steps necessary to setup publishing of Java packages to Maven Central for the https://solace.community domain. This was trickier than I thought so I figured I'd share what I did to hopefully help others :)
 
 I'm going to try to keep this short and to the point but feel free to let me know if you have any questions.
 I used the following resources when figuring out these steps so props to their creators!
@@ -25,6 +25,8 @@ There are a handful of approved repository hosting options specified by Maven Ce
 ### Get An Account
 The first step down this road is to register a OSSRH account. This account will be used to prove ownership of your domain (for publishing packages), but also to manage your repositories in the future. [Sign up for an account here](https://issues.sonatype.org/secure/Signup!default.jspa)
 
+✅ Account Created
+
 ### Prove Domain Ownership
 Now that you have an account the next step in the process is to prove ownership of the domain that matches the group that you'd like to publish to. Usually this is your domain name in reverse, so something like `com.company` if your domain is `company.com`. Since our developer community is at `solace.community` this meant we would publish to the `community.solace` group.   
 
@@ -34,6 +36,8 @@ To prove that we own this domain I had to execute a few simple steps:
 1. Wait a few hours (it says it could take up to 2 business days) for the DNS TXT record to be verified. 
 1. Check the ticket for confirmation that domain ownership has been confirmed.
 1. Make a note to comment on this ticket after your first release to enable syncing to maven central!
+
+✅ Domain ownership proven 
 
 ### Create Your User Token
 Now that we have permission to publish to our domain we need to create a user token for publishing. This token will be used as part of the publishing process. 
