@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Publishing Java Packages to Maven Central from Github for a new Domain
+title: Publishing Github Java Packages to Maven Central for a New Domain
 excerpt: "Over the past few weeks I went through the steps necessary to setup publishing of Java packages to Maven Central for a new domain. This was trickier than I thought so I figured I'd share what I did to hopefully help others :)"
 categories: [post]
 tags: []
@@ -9,10 +9,9 @@ github_comments_issueid: 11
 ---
 
 ## Overview
-The [Solace](solace.com) Developer Relations team recently launched our [SolaceCommunity github organization](github.com/SolaceCommunity] as a home for open source projects that are authored, maintained and supported by the amazing [Solace Community](solace.community). If you're interested in joining our community you can read more about it [here](https://solace.com/blog/announcing-new-solacecommunity-github-organization/), but that won't be the focus of the rest of this blog. The focus of this blog is how I enabled publishing of Java packges to Maven Central for this new github community. Since Java is one of our most used languages, and most Java projects now leverage Maven or Gradle, I wanted to enable developers contributing their Java projects to be able to easily publish to Maven Centralto make it easier for everyone in the community to easily use them. Over the past few weeks I went through the steps necessary to setup publishing of Java packages to Maven Central for the https://solace.community domain. This was trickier than I thought so I figured I'd share what I did to hopefully help others :)
+The [Solace](solace.com) Developer Relations team recently launched our [SolaceCommunity github organization](github.com/SolaceCommunity) as a home for open source projects that are authored, maintained and supported by the amazing [Solace Community](solace.community). If you're interested in joining our community you can read more about it [here](https://solace.com/blog/announcing-new-solacecommunity-github-organization/), but that won't be the focus of the rest of this blog. The focus of this blog is how I enabled publishing of Java packges to Maven Central for this new github community. Since Java is one of our most used languages, and most Java projects now leverage Maven or Gradle, I wanted to enable developers contributing their Java projects to be able to easily publish to Maven Centralto make it easier for everyone in the community to easily use them. Over the past few weeks I went through the steps necessary to setup publishing of Java packages to Maven Central for the https://solace.community domain. This was trickier than I thought so I figured I'd share what I did to hopefully help others :)
 
-I'm going to try to keep this short and to the point but feel free to let me know if you have any questions. 
-
+I'm going to try to keep this short and to the point but feel free to let me know if you have any questions.
 I used the following resources when figuring out these steps so props to their creators!
 * [OSSRH Guide](https://central.sonatype.org/pages/ossrh-guide.html) 
 * [Publishing Java packages with Maven](https://docs.github.com/en/actions/guides/publishing-java-packages-with-maven)
@@ -21,10 +20,10 @@ I used the following resources when figuring out these steps so props to their c
 ## Setting up OSSRH (The Repository)
 There are a handful of approved repository hosting options specified by Maven Central. You can find the entire list [here](https://maven.apache.org/repository/guide-central-repository-upload.html#approved-repository-hosting), but the easiest approach seems to leverage [Open Source Software Repository Hosting (OSSRH)](http://central.sonatype.org/pages/ossrh-guide.html) so that's the approach I decided to take. 
 
-*Note that if you're just trying to publish a few personal projects on github and are fine publishing under `io.github` you can skip this section*
+*Note that if you're just trying to publish a few personal projects on github and are fine publishing under `io.github` then you don't need to follow all of these steps so I'd suggest heading over to google and doing a few more searches :)*
 
 ### Get An Account
-The first step down this road is to register a OSSRH account. This account will be used to prove ownership of your domain (for publishing packages), but also to manage your repositories in the future. Sign up for an account here](https://issues.sonatype.org/secure/Signup!default.jspa)
+The first step down this road is to register a OSSRH account. This account will be used to prove ownership of your domain (for publishing packages), but also to manage your repositories in the future. [Sign up for an account here](https://issues.sonatype.org/secure/Signup!default.jspa)
 
 ### Prove Domain Ownership
 Now that you have an account the next step in the process is to prove ownership of the domain that matches the group that you'd like to publish to. Usually this is your domain name in reverse, so something like `com.company` if your domain is `company.com`. Since our developer community is at `solace.community` this meant we would publish to the `community.solace` group.   
@@ -59,7 +58,7 @@ Here is what I did:
 	<groupId>community.solace.spring.integration</groupId>
 	<artifactId>solace-spring-integration-leader</artifactId>
 	<version>1.1.0-SNAPSHOT</version>
-    ```
+    ```	
 1. What to know about the version! Okay **this is important**. When publishing maven projects you have releases and you have snapshots. A "release" is the final build for a version which does not change whereas a "snapshot" is a temporary build which can be replaced by another build with the same name. Go ahead and google this if you want to learn more :)   
 Once you know the difference you're ready to set your version. Use a version ending in a number, e.g: `1.1.0`, for a "release" and end it in `-SNAPSHOT`, e.g: `1.1.0-SNAPSHOT` for a snapshot. 
 
@@ -68,7 +67,7 @@ Once you know the difference you're ready to set your version. Use a version end
     <name>Solace Spring Integration Leader</name>
 	<description>This project allows for Spring Integration Leader Election using Solace Exclusive Queues</description>
 	<url>https://github.com/solacecommunity/spring-solace-leader-election</url>
-    ```
+    ```	
 1. Include a license, source control info `scm`, developers and organization(I believe this is optional) information. 
     ```
     <licenses>
@@ -99,7 +98,7 @@ Once you know the difference you're ready to set your version. Use a version end
 		<developerConnection>scm:git:git@github.com:solacecommunity/solace-spring-integration-leader.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-    ```
+    ```	
 
 1. Add a profile for OSSRH which includes the `snapshotRepository` info, the `nexus-staging-maven-plugin`, and the `maven-gpg-plugin`. Note in the example below I have this profile `activeByDefault` so you don't have to specify it when running maven commands, however you may not want to do this. Depends on your use case :) 
     ```
@@ -155,7 +154,7 @@ Once you know the difference you're ready to set your version. Use a version end
 				</plugins>
 			</build>
 		</profile>
-    ```
+    ```	
 
 1. Include the `maven-release-plugin`, the `maven-javadoc-plugin`, the `maven-source-plugin` and the `flatten-maven-plugin` plugin. 
     ```
@@ -240,7 +239,7 @@ Once you know the difference you're ready to set your version. Use a version end
 			</plugin>
 		</plugins>
 	</build>
-    ```
+    ```	
 
 ✅ The maven pom is now ready to go!
 
@@ -256,7 +255,8 @@ The first step is to **Create Your Key**. You can do this locally using a tool s
 1. Generate your key pair. You will be prompted for a "Real Name" and "Eamil Address" that you want to use with the key
     ```
     gpg --gen-key
-    ```
+    ```	
+
 ✅ GPG key created!
 
 ## Share Your Public Key
@@ -284,7 +284,7 @@ gpg --keyserver hkp://pool.sks-keyservers.net --send-keys MYIDENTIFIER
 Okay at this point our project is looking pretty good and we could run a deployment locally using the `mvn --batch-mode clean deploy` command, however we actually want to perform our releases via a Github action. Shoutout to [sualeh](https://gist.github.com/sualeh) for creating [this gist](https://gist.github.com/sualeh/ae78dc16123899d7942bc38baba5203c) which helps me navigate the next few steps! In order to make the release from a Github Action we need to make our GPG private key and OSSRH user information available to the Github actions while also keeping it private. We can do this using [Github Action Secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets). 
 
 I created secrets at the Github Organization level so I followed the steps below to keep my `OSSRH_GPG_SECRET_KEY`,`OSSRH_GPG_SECRET_KEY_PASSWORD`,`OSSRH_USERNAME` and `OSSRH_PASSWORD` secret. If not clear by the name these are my GPG Secret Key, my GPG Secret Key password, my OSSRH Username (from the token we generated earlier) and the OSSRH password (from the token we generated earlier).If that screenshot feels out of date you can find the [docs here](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-an-organization)
-![Creating encrypted secrets for an organization](img/createOrgSecrets.png)
+![Creating encrypted secrets for an organization]({{site.url}}/img/createOrgSecrets.png)
 
 
 ✅ Secrets configured!
@@ -338,7 +338,7 @@ Now you're ready to run the Github Action. I'd recommend testing out the publish
 
 1. After the deploy job successfully runs you can head over to https://s01.oss.sonatype.org/content/repositories/snapshots/ and navigate to your project to verify that the snapshot has successfully deployed. It should look something like this: 
 
-![snapshot](img/snapshot.png)
+![snapshot]({{site.url}}/img/snapshot.png)
 
 ✅ Snapshot published!
 
@@ -356,12 +356,13 @@ Now that our project is staged for release we need to login to the OSSRH Nexus R
 1. Login to the [OSSRH Sonatype Nexus Repository Manager](https://s01.oss.sonatype.org/#welcome)
 1. Navigate to the `Staging Repositories` in the menu on the left hand side. 
 1. Examine the contents of the release and if everything looks good `close` the release. More information is available [here](https://central.sonatype.org/pages/releasing-the-deployment.html) 
-1. The OSSRH deployment is now complete, but if this is your first release remember to go back and comment on your "New Project Ticket" we created earlier so your project will sync to Maven Central. 
+1. The OSSRH deployment is now complete, but if this is your first release remember to go back and comment on your "New Project Ticket" we created earlier so your project will sync to Maven Central. 	
+
 ✅ Deployment Complete!
 
 ### Check out the deployed project! 
 After ~24 hours head over to [Maven Central's search](https://search.maven.org/search) and you should be able to find our project by typing in your groupId or artifactId. 
-![mavenCentralSearch](img/mavenCentralSearch.png)
+![mavenCentralSearch]({{site.url}}/img/mavenCentralSearch.png)
 
 ## Conclusion
 Hope this was useful! Feel free to leave a comment if you have any questions :) 
