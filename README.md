@@ -13,7 +13,7 @@ This repository contains my static site, marcd.dev
 ```
 git clone 
 cd mrc0113.github.io
-jekyll server
+bundle exec jekyll serve
 ```
 
 Check out your awesome blog at `http://localhost:4000` and Cheers!
